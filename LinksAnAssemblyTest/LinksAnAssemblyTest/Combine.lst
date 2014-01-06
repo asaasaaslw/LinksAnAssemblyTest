@@ -1,0 +1,67 @@
+Microsoft (R) Macro Assembler Version 11.00.50727.1	    01/03/14 16:22:05
+Combine.asm						     Page 1 - 1
+
+
+				; Sample x64 Assembly Program
+
+				.386
+				.model flat,stdcall
+				option casemap:none
+
+ 00000000			.data
+ 00000000 00000004		realVal dd 4 ; this stores a real number in 8 bytes
+
+ 00000000			.code
+ 00000000			CombineA PROC arg1:PTR DWORD,arg2:PTR DWORD
+ 00000003  8B 4D 08		   mov	  ecx , arg1
+ 00000006  8B 5D 0C		   mov	  ebx , arg2
+ 00000009  33 C0		   xor    eax , eax
+ 0000000B  03 C1		   add	  eax , ecx
+ 0000000D  03 C3		   add	  eax , ebx
+ 0000000F  0F AF 05		   imul	  eax , realVal
+	   00000000 R
+				   RET                             ; return
+ 0000001A			CombineA ENDP
+				End
+Microsoft (R) Macro Assembler Version 11.00.50727.1	    01/03/14 16:22:05
+Combine.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000004 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000001A DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+CombineA . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000001A Public STDCALL
+  arg1 . . . . . . . . . . . . .	DWord	 bp + 00000008
+  arg2 . . . . . . . . . . . . .	DWord	 bp + 0000000C
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+WIN_X86  . . . . . . . . . . . .	Text   	 
+realVal  . . . . . . . . . . . .	DWord	 00000000 _DATA	
+
+	   0 Warnings
+	   0 Errors
