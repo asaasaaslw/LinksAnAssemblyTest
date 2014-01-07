@@ -37,5 +37,8 @@
     <None Include="Combine.asm">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Combine64.asm">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

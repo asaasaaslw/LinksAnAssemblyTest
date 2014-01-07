@@ -10,7 +10,13 @@ double CombineC(int a, int b, int c, int d, int e, double f)
 	return (a+b+c+d+e)/(f+1.5);
 }
 // NOTE: extern ¡°C¡± needed to prevent C++ name mangling
-extern "C" int __stdcall CombineA(long arg1, long arg2);
+#ifdef WIN32
+	extern "C" int __stdcall CombineA(long arg1, long arg2);
+#endif
+
+#ifdef X64
+	extern "C" int __fastcall CombineA(long arg1, long arg2);
+#endif
 
 int _tmain(int argc, _TCHAR* argv[])
 {

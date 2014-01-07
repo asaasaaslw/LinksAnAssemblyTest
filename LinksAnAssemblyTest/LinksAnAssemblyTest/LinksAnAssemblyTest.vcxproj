@@ -111,13 +111,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Combine.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Combine64.obj;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>./Debug</AdditionalLibraryDirectories>
     </Link>
     <CustomBuildStep>
@@ -129,7 +129,7 @@
       </Outputs>
     </CustomBuildStep>
     <PreBuildEvent>
-      <Command>ml64.exe /DWIN_X64 /Zi /c /Cp /Fl /Fo .\Debug\Combine.obj Combine.asm</Command>
+      <Command>ml64.exe /DWIN_X64 /Zi /c /Cp /Fl /Fo .\Debug\Combine64.obj Combine64.asm</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -156,7 +156,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -164,7 +164,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Combine64.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\x64\Release</AdditionalLibraryDirectories>
     </Link>
+    <PreBuildEvent>
+      <Command>ml64.exe /DWIN_X64 /Zi /c /Cp /Fl /Fo .\x64\Release\Combine64.obj Combine64.asm</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -184,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Combine.asm" />
+    <None Include="Combine64.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
